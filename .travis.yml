@@ -24,6 +24,7 @@ before_install:
 install:
 - yarn global add gitbook-cli
 script:
+- gitbook install
 - gitbook build
 after_script:
 - cd ./_book
