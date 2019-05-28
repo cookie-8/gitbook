@@ -8,7 +8,7 @@ env:
 - P_BRANCH=dev
 - U_NAME=cookie
 - U_EMAIL="hllzjy@qq.com"
-- P_REF="zhengjy8.github.io.git"
+- P_REF="git@github.com:zhengjy8/zhengjy8.github.io.git"
 branches:
   only:
   - dev
@@ -33,4 +33,5 @@ after_script:
 - git config user.email $U_EMAIL
 - git add .
 - git commit -m "Update for building"
-- git push --force --quiet "https://github.com/${U_NAME}/${P_REF}" master:$P_BRANCH
+- git remote add origin ${P_REF}
+- git push -u origin master
