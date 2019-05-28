@@ -1,55 +1,35 @@
-# 使用的语言
 language: node_js
-
-# 使用的nodejs版本
 node_js:
- - 10.15.3
-
+- 10.15.3
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 env:
-  - P_BRANCH=dev
-  - U_NAME=cookie
-  - U_EMAIL="hllzjy@qq.com"
-  - P_REF="zhengjy8.github.io.git"
-
-# 仓库的分支
+- P_BRANCH=dev
+- U_NAME=cookie
+- U_EMAIL="hllzjy@qq.com"
+- P_REF="zhengjy8.github.io.git"
 branches:
   only:
   - dev
-
-# 执行isntall前需要执行的命令
 before_install:
-# 配置解密信息
- - openssl aes-256-cbc -K $encrypted_81dcad97bd4f_key -iv $encrypted_81dcad97bd4f_iv -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
-
-# 改变文件权限
- - chmod 600 ~/.ssh/id_rsa
-
-# 配置 ssh
- - eval $(ssh-agent)
- - ssh-add ~/.ssh/id_rsa
- - cp .travis/ssh_config ~/.ssh/config
-
-# 配置git 的个人信息
- - git config --global user.name 'cookie'
- - git config --global user.email hllzjy@qq.com
-
-# 执行install
+- openssl aes-256-cbc -K $encrypted_81dcad97bd4f_key -iv $encrypted_81dcad97bd4f_iv
+  -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name 'cookie'
+- git config --global user.email hllzjy@qq.com
 install:
- - yarn global add gitbook-cli 
-# 执行命令脚本
+- yarn global add gitbook-cli
 script:
-  - gitbook build 
-
-# 执行git提交
+- gitbook build
 after_script:
-  - cd ./_book
-  - git init
-  - git config user.name "${U_NAME}"
-  - git config user.email "${U_EMAIL}"
-  - git add .
-  - git commit -m "Update for building"
-  - git push --force --quiet "git@github.com:${U_NAME}/${P_REF}" master:${P_BRANCH}
+- cd ./_book
+- git init
+- git config user.name "${U_NAME}"
+- git config user.email "${U_EMAIL}"
+- git add .
+- git commit -m "Update for building"
+- git push --force --quiet "git@github.com:${U_NAME}/${P_REF}" master:${P_BRANCH}
