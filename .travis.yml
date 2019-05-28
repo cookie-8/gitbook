@@ -7,8 +7,8 @@ cache:
 env:
 - P_BRANCH=dev
 - U_NAME=cookie
-- U_EMAIL="hllzjy@qq.com"
-- P_REF="git@github.com:zhengjy8/zhengjy8.github.io.git"
+- U_EMAIL=hllzjy@qq.com
+- P_REF=git@github.com:zhengjy8/zhengjy8.github.io.git
 branches:
   only:
   - dev
