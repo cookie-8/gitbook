@@ -33,4 +33,4 @@ after_script:
 - git config user.email $U_EMAIL
 - git add .
 - git commit -m "Update for building"
-- git push --force --quiet "git@github.com:${U_NAME}/${P_REF}" master:$P_BRANCH
+- git push --force --quiet "https://github.com/${U_NAME}/${P_REF}" master:$P_BRANCH
