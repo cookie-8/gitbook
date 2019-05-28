@@ -35,4 +35,5 @@ after_script:
 - git commit -m "Update for building"
 - git remote rm origin
 - git remote add origin "${P_REF}"
+- git remote -v
 - git push -u origin master
