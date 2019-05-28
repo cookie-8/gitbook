@@ -5,6 +5,7 @@ cache:
   directories:
   - node_modules
 env:
+  global:
 - P_BRANCH=dev
 - U_NAME=cookie
 - U_EMAIL="hllzjy@qq.com"
