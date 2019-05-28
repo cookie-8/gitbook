@@ -9,7 +9,7 @@ env:
     - U_NAME="cookie"
     - P_BRANCH="dev"
     - U_EMAIL="hllzjy@qq.com"
-    - P_REF="git@github.com:zhengjy8/gitbook.git"
+    - P_REF="git@github.com:zhengjy8/zhengjy8.github.io.git"
 branches:
   only:
   - dev
