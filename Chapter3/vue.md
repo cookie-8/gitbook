@@ -9,3 +9,4 @@
     > React：你给我一个数据，我根据这个数据生成一个全新的 Virtual DOM，然后跟我上一次生成的 Virtual DOM 去 diff，得到一个 Patch，然后把这个 Patch 打到浏览器的 DOM 上去。完事。并且这里的 Patch 显然不是完整的 Virtual DOM，而是新的 Virtual DOM 和上一次的 Virtual DOM 经过 diff 后的差异化的部分。
 
     > Vue: 在渲染过程中，会跟踪每一个组件的依赖关系，不需要重新渲染整个组件树。
+
