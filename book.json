@@ -1,7 +1,7 @@
 {
-    "title": "cookie8 的文档库",
-    "author": "cookie8",
-    "description": "cookie8 的文档库,里面是前端文章",
+    "title": "zhengjy8 的文档库",
+    "author": "zhengjy8",
+    "description": "zhengjy8 的文档库,里面是前端文章",
     "language": "zh-hans",
     "styles": {
       "website": "./extra/css/gitbook-configure.css"
@@ -25,14 +25,14 @@
       "github-buttons": {
         "buttons": [
           {
-            "user": "cookie8",
+            "user": "zhengjy8",
             "repo": "", 
             "type": "star",
             "count": true,
             "size": "small"
           }, 
           {
-            "user": "cookie8",
+            "user": "zhengjy8",
             "width": "160", 
             "type": "follow", 
             "count": true,
