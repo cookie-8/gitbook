@@ -15,4 +15,8 @@
     * [vue](Chapter4/vue.md)
 * [第五章 webpack](Chapter5/README.md)
     * [第1节：打包分块](Chapter5/打包分块.md)
+* [第六章 shell](Chapter6/README.md)
+    * [第1节：shell小脚本](Chapter6/shell.md)
+* [第七章 git](Chapter7/README.md)
+    * [第1节：git配置](Chapter7/git相关配置.md)
 
