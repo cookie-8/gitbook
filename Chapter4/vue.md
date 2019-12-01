@@ -11,124 +11,126 @@
     > Vue: 在渲染过程中，会跟踪每一个组件的依赖关系，不需要重新渲染整个组件树。
 
 3. 响应式原理 - 简单模拟代码
+
 ```js
-uid = 0
-class Dep {
-    subs = []
-    id = uid++
 
-    addSub(sub) {
-        this.subs.push(sub)
-    }
-    depend() {
-        if (Dep.target) {
-            Dep.target.addDep(this)
+    uid = 0
+    class Dep {
+        subs = []
+        id = uid++
+
+        addSub(sub) {
+            this.subs.push(sub)
         }
-    }
-    notify() {
-        this.subs.forEach(sub => sub.run())
-    }
-}
-
-Dep.target = null
-
-function observe(data) {
-    if (data.__ob__) return
-    data && Object.keys(data).forEach(key => {
-        let val = data[key]
-        const dep = new Dep()
-
-        Object.defineProperty(data, key, {
-            enumerable: true,
-            configurable: true,
-            get() {
-                dep.depend()
-                return val
-            },
-            set(newVal) {
-                if (newVal !== newVal || newVal === val) return
-                val = newVal
-                dep.notify()
+        depend() {
+            if (Dep.target) {
+                Dep.target.addDep(this)
             }
+        }
+        notify() {
+            this.subs.forEach(sub => sub.run())
+        }
+    }
+
+    Dep.target = null
+
+    function observe(data) {
+        if (data.__ob__) return
+        data && Object.keys(data).forEach(key => {
+            let val = data[key]
+            const dep = new Dep()
+
+            Object.defineProperty(data, key, {
+                enumerable: true,
+                configurable: true,
+                get() {
+                    dep.depend()
+                    return val
+                },
+                set(newVal) {
+                    if (newVal !== newVal || newVal === val) return
+                    val = newVal
+                    dep.notify()
+                }
+            })
         })
-    })
 
-    Object.defineProperty(data, '__ob__', {
-        configurable: true,
-        enumerable: false,
-        value: true,
-        writable: true
-    })
-}
-
-
-class Watcher {
-
-    constructor(data, exp, callback) {
-        this.cb = callback
-        this.deps = {}
-        this.exp = exp
-        // 获取得到数据的函数
-        this.getter = this.parseExp(exp.trim())
-        this.data = data
-        this.value = this.get()
+        Object.defineProperty(data, '__ob__', {
+            configurable: true,
+            enumerable: false,
+            value: true,
+            writable: true
+        })
     }
 
-    addDep(dep) {
-        if (!this.deps[dep.id]) {
-            dep.addSub(this)
-            this.deps[dep.id] = dep
+
+    class Watcher {
+
+        constructor(data, exp, callback) {
+            this.cb = callback
+            this.deps = {}
+            this.exp = exp
+            // 获取得到数据的函数
+            this.getter = this.parseExp(exp.trim())
+            this.data = data
+            this.value = this.get()
         }
-    }
 
-    get() {
-        Dep.target = this
-        let value = this.getter.call(this.data, this.data)
-        Dep.target = null
-        return value
-    }
-
-
-    run() {
-        let value = this.get()
-        let oldValue = this.value
-        if (value !== oldValue) {
-            this.value = value
-            this.cb.call(null, value, oldValue)
+        addDep(dep) {
+            if (!this.deps[dep.id]) {
+                dep.addSub(this)
+                this.deps[dep.id] = dep
+            }
         }
-    }
 
-    parseExp(exp) {
-        if (/[^\w.$]/.test(exp)) return
-
-        let exps = exp.split('.')
-
-        return function (obj) {
-            return obj[exps[1]]
+        get() {
+            Dep.target = this
+            let value = this.getter.call(this.data, this.data)
+            Dep.target = null
+            return value
         }
+
+
+        run() {
+            let value = this.get()
+            let oldValue = this.value
+            if (value !== oldValue) {
+                this.value = value
+                this.cb.call(null, value, oldValue)
+            }
+        }
+
+        parseExp(exp) {
+            if (/[^\w.$]/.test(exp)) return
+
+            let exps = exp.split('.')
+
+            return function (obj) {
+                return obj[exps[1]]
+            }
+        }
+
     }
 
-}
+    // 监测函数
+    function $watch(data, exp, cb) {
+        observe(data)
+        new Watcher(data, exp, cb)
+    }
 
-// 监测函数
-function $watch(data, exp, cb) {
-    observe(data)
-    new Watcher(data, exp, cb)
-}
+    //test
+    let a = {
+        b: 100,
+        c: 200
+    }
 
-//test
-let a = {
-    b: 100,
-    c: 200
-}
+    const callback = function (newValue, oldValue) {
+        console.log(`新值为：${newValue}，旧值为：${oldValue}`)
+    }
 
-const callback = function (newValue, oldValue) {
-    console.log(`新值为：${newValue}，旧值为：${oldValue}`)
-}
+    $watch(a, 'a.b', callback)
+    $watch(a, 'a.c', callback)
 
-$watch(a, 'a.b', callback)
-$watch(a, 'a.c', callback)
-
-a.b = 101
+    a.b = 101
 
 ```
