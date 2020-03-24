@@ -20,4 +20,7 @@
     * [第1节：shell小脚本](Chapter6/shell.md)
 * [第七章 git](Chapter7/README.md)
     * [第1节：git配置](Chapter7/git相关配置.md)
+* [第八章 IT知识](Chapter8/README.md)
+    * [第1节：http相关](Chapter8/Http.md)
+    * [第2节：浏览器相关](Chapter8/browser.md)
 
