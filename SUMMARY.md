@@ -14,6 +14,7 @@
 * [第四章 框架](Chapter4/README.md)
     * [react](Chapter4/react.md)
     * [vue](Chapter4/vue.md)
+    * [微前端架构](Chapter4/microFramework.md)
 * [第五章 webpack](Chapter5/README.md)
     * [第1节：打包分块](Chapter5/打包分块.md)
 * [第六章 shell](Chapter6/README.md)
