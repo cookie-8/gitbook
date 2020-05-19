@@ -7,6 +7,7 @@
     * [正则](Chapter1/正则.md)
     * [技巧](Chapter1/技巧.md)
     * [this的6种指向](Chapter1/this口诀.md)
+    * [es5与es6继承实现](Chapter1/继承.md)
 * [第二章 css](Chapter2/README.md)
     * [基础知识](Chapter2/基础知识.md)
 * [第三章 html](Chapter3/README.md)
