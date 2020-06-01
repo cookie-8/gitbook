@@ -16,7 +16,7 @@ class MyPromise {
     if (this.status === "pending") {
       this.status = "fulfilled"
       this.value = value
-      this.onResovleCallback.forEach((fn) => fn(value))
+      this.onResovleCallback.forEach((fn) => fn())
     }
   }
 
@@ -24,7 +24,7 @@ class MyPromise {
     if (this.status === "pending") {
       this.status = "rejected"
       this.reason = reason
-      this.onRejectCallback.forEach((fn) => fn(reason))
+      this.onRejectCallback.forEach((fn) => fn())
     }
   }
 
