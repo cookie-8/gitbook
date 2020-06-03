@@ -22,6 +22,8 @@
     * [微前端架构](Chapter4/microFramework.md)
 * [第五章 webpack](Chapter5/README.md)
     * [第1节：打包分块](Chapter5/打包分块.md)
+    * [第2节：loader](Chapter5/loader.md)
+    * [第3节：plugin](Chapter5/plugin.md)
 * [第六章 shell](Chapter6/README.md)
     * [第1节：shell小脚本](Chapter6/shell.md)
 * [第七章 git](Chapter7/README.md)
@@ -32,5 +34,8 @@
 * [第九章 算法](Chapter9/README.md)
     * [第1节：排序](Chapter9/排序.md)
     * [第2节：bfs dfs](Chapter9/深度、广度遍历.md)
-    * [第3节：dp](Chapter9/dp.md)
+    * [第3节：dp](Chapter9/动态规划.md)
+    * [第4节：贪心](Chapter9/贪心.md)
+    * [第5节：分治](Chapter9/二分.md)
+    * [第6节：回溯](Chapter9/回溯.md)
 
