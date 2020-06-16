@@ -6,6 +6,7 @@
     * [ts](Chapter1/ts.md)
     * [正则](Chapter1/正则.md)
     * [技巧](Chapter1/技巧.md)
+    * [柯里化](Chapter1/柯里化.md)
     * [this的6种指向](Chapter1/this口诀.md)
     * [es5与es6继承实现](Chapter1/继承.md)
     * [call apply bind](Chapter1/实现call&apply&bind.md)
@@ -38,4 +39,6 @@
     * [第4节：贪心](Chapter9/贪心.md)
     * [第5节：分治](Chapter9/二分.md)
     * [第6节：回溯](Chapter9/回溯.md)
+* [第十章 面试](Chapter10/README.md)
+    * [第1节：算法](Chapter10/算法.md)
 
